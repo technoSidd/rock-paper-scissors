@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+    img {
+        cursor: pointer;
+        border-radius: 130px;
+        margin: 15px;
+    }
+    img:hover {
+        opacity: 0.7;
+        transition: .5s ease;
+    }
+    h1 {
+        font-family: fantasy;
+    }
+    .you-won {
+        color:green;
+    }
+    .you-lose {
+        color: red;
+    }
+    .draw {
+        color: blue;
+    }
+    .you-won, .you-lose, .draw {
+        font-size: 34px;
+        font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Geneva,Verdana,sans-serif; 
+    }
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="container text-center">
+            <div>
+                <h1>Let's play ROCK, PAPER, SCISSORS</h1>
+                <img id="image1" src="stone.jpg" onclick="rps('rock')">
+                <img id="image2" src="paper.jpg" onclick="rps('paper')">
+                <img id="image3" src="scissors.jpg" onclick="rps('scissors')">
+            </div>
+            <br><br>
+            <hr>
+            <br><br>
+            <div>
+                <p id='inputs' style="display: none">You chose <span id="userInput"></span> | <span id="computerInput"></span> Bot chose</p>
+                <p id="resultSection" style="display: none"><span id="result"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var nArray = ['rock','paper','scissors'];
+        var result = "";
+        var rockImage = "<img src='stone.jpg' style='height: 50px; width: 50px;'>";
+        var paperImage = "<img src='paper.jpg' style='height: 50px; width: 50px;'>";
+        var scissorsImage = "<img src='scissors.jpg' style='height: 50px; width: 50px;'>";
+        var rockReversedImage = "<img src='stone_reverse.jpg' style='height: 50px; width: 50px;'>";
+        var paperReversedImage = "<img src='paper_reverse.jpg' style='height: 50px; width: 50px;'>";
+        var scissorsReversedImage = "<img src='scissors_reverse.jpg' style='height: 50px; width: 50px;'>";
+        var image = '';
+        var imageReversed = '';
+        function rps(input) {
+            var rand = nArray[Math.floor(Math.random() * nArray.length)];
+            switch(input) {
+                case "rock":
+                    image = rockReversedImage;
+                    document.getElementById('image1').style.border = '2px dotted black';
+                    document.getElementById('image2').style.border = 'none';
+                    document.getElementById('image3').style.border = 'none';
+                    if(rand == "scissors") {
+                        imageReversed = scissorsImage;
+                        result = "<p class='you-won'>You WON!</p><strong>ROCK</strong> beats <strong>SCISSORS</strong>."
+                    } else if(rand == "paper") {
+                        imageReversed = paperImage;
+                        result = "<p class='you-lose'>You LOSE!</p><strong>PAPER</strong> beats <strong>ROCK</strong>.";
+                    } else {
+                        imageReversed = rockImage;
+                        result = "<p class='draw'>It's a DRAW!</p>";
+                    }
+                break;
+
+                case "paper":
+                    image = paperReversedImage;
+                    document.getElementById('image2').style.border = '2px dotted black';
+                    document.getElementById('image1').style.border = 'none';
+                    document.getElementById('image3').style.border = 'none';
+                    if(rand == "rock") {
+                        imageReversed = rockImage;
+                        result = "<p class='you-won'>You WON!</p><strong>PAPER</strong> beats <strong>ROCK</strong>.";
+                    } else if(rand == "scissors") {
+                        imageReversed = scissorsImage;
+                        result = "<p class='you-lose'>You LOSE!</p><strong>SCISSORS</strong> beats <strong>PAPER</strong>.";
+                    } else {
+                        imageReversed = paperImage;
+                        result = "<p class='draw'>It's a DRAW!</p>";
+                    }
+                break;
+
+                case "scissors":
+                    image = scissorsReversedImage;
+                    document.getElementById('image3').style.border = '2px dotted black';
+                    document.getElementById('image1').style.border = 'none';
+                    document.getElementById('image2').style.border = 'none';
+                    if(rand == "paper") {
+                        imageReversed = paperImage;
+                        result = "<p class='you-won'>You WON!</p><strong>SCISSORS</strong> beats <strong>PAPER</strong>.";
+                    } else if(rand == "rock") {
+                        imageReversed = rockImage;
+                        result = "<p class='you-lose'>You LOSE!</p><strong>ROCK</strong> beats <strong>SCISSORS</strong>.";
+                    } else {
+                        imageReversed = scissorsImage;
+                        result = "<p class='draw'>It's a DRAW!</p>";
+                    }
+                break;
+            }
+            document.getElementById('resultSection').style.display = "block";
+            document.getElementById("inputs").style.display = "block";
+            document.getElementById('result').innerHTML = result;
+            document.getElementById('computerInput').innerHTML = imageReversed;
+            document.getElementById('userInput').innerHTML = image;
+        }
+    </script>
+</body>
+</html>
