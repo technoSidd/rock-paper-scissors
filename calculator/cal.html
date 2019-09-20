@@ -1,0 +1,57 @@
+<html>
+<head>
+	<link rel="stylesheet" href="css1/bootstrap.min.css">
+	<link rel="stylesheet" href="css1/mediaquries.css">
+	<style>
+	header{
+	margin:0 15px;}
+	.txt{
+		width:50%;
+		margin:auto;
+		}
+	a{text-decoration:none;
+	color:black;}		
+	</style>
+</head>
+<body>
+	<header>
+		<div class="containe">
+		<div class="txt">
+		<form name="f">
+		<table align="center" class="table table-bordered">
+		<tr><td colspan=4><input type="text" name="t"  class="form-control"></td></tr>
+			<tr>
+				<th colspan="2"><input type="button" name="AC"  class="form-control" value="AC" onclick="f.t.value = '' "></th>
+				<th><input type="button" name="divide"  class="form-control" value="/" onclick="f.t.value += ' / ' "></th>
+				<th><input type="button" name="multiply"  class="form-control" value="*" onclick="f.t.value += ' * ' "></th>
+			</tr>
+			<tr>
+				<td><input type="button" name="seven" class="form-control" value="7" onclick="f.t.value += '7' "></td>
+				<td><input type="button" name="eight"  class="form-control" value="8" onclick="f.t.value += '8' "></td>
+				<td><input type="button" name="nine"  class="form-control" value="9" onclick="f.t.value += '9' "></td>
+				<td><input type="button" name="minus" class="form-control" value="-" onclick="f.t.value += ' - ' "></td>
+			</tr>
+			<tr>
+				<td><input type="button"  name="four" class="form-control" value="4" onclick="f.t.value += '4' "></td>
+				<td><input type="button" name="five" class="form-control" value="5" onclick="f.t.value += '5' "></td>
+				<td><input type="button"  name="six" class="form-control" value="6" onclick="f.t.value += '6' "></td>
+				<td><input type="button" name="Plus" class="form-control" value="+" onclick="f.t.value += ' + ' "></td>
+			</tr>
+			<tr>
+				<td><input type="button"  name="one" class="form-control" value="1" onclick="f.t.value += '1' "></td>
+				<td><input type="button"  name="two" class="form-control" value="2" onclick="f.t.value += '2' "></td>
+				<td><input type="button"  name="three" class="form-control" value="3" onclick="f.t.value += '3' "></td>
+				<td rowspan="2" align="center"><input type="button" name="equal" id="t1" class="form-control" value="=" onclick="f.t.value = eval(f.t.value)"></td>
+			</tr>
+			<tr>
+				<td><input type="button"  name="Percent" class="form-control" value="%" onclick="f.t.value += '%' "></td>
+				<td><input type="button" name="zero" class="form-control" value="0" onclick="f.t.value += '0' "></td>
+				<td><input type="button" name="Dot" class="form-control" value="." onclick="f.t.value += '.' "></td>
+			</tr>
+		</table>
+		</form>
+		</div>
+		</div>
+	</header>
+</body>
+</html>
